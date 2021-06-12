@@ -32,7 +32,7 @@
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:padding="16dp"
+        android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="@+id/edittext_username"
         app:layout_constraintStart_toStartOf="@+id/edittext_username"
         app:layout_constraintTop_toBottomOf="@+id/edittext_username" />
@@ -46,7 +46,7 @@
         android:ems="10"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:padding="16dp"
+        android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="@+id/edittext_email"
         app:layout_constraintStart_toStartOf="@+id/edittext_email"
         app:layout_constraintTop_toBottomOf="@+id/edittext_email" />
