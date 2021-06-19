@@ -17,6 +17,10 @@ import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
 
+    companion object{
+        val TAG = "RegisterActivity"
+    }
+
     private lateinit var binding: ActivityRegisterBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,7 +63,6 @@ class RegisterActivity : AppCompatActivity() {
 
 //            val bitmapDrawable = BitmapDrawable(bitmap)
 //            binding.selectphotoRegisterButton.setBackgroundDrawable(bitmapDrawable)
-
         }
     }
 
@@ -77,11 +80,11 @@ class RegisterActivity : AppCompatActivity() {
                 .addOnCompleteListener {
                     if (!it.isSuccessful) return@addOnCompleteListener
 
-                    Log.d("Main", "Successfully created user with uid : ${it.result?.user?.uid}")
+                    Log.d(TAG, "Successfully created user with uid : ${it.result?.user?.uid}")
                     uploadImageToFirebaseStorage()
                 }
                 .addOnFailureListener {
-                    Log.d("Main", "Failed create user: ${it.message}")
+                    Log.d(TAG, "Failed create user: ${it.message}")
                     Toast.makeText(this,"Failed create user: ${it.message}", Toast.LENGTH_SHORT).show()
                 }
     }
@@ -96,7 +99,7 @@ class RegisterActivity : AppCompatActivity() {
                     Toast.makeText(this, "Gambar berhasil diupload", Toast.LENGTH_SHORT).show()
 
                     ref.downloadUrl.addOnSuccessListener {
-                        Log.d("RegisterActivity", "File location: $it")
+                        Log.d(TAG, "File location: $it")
                         saveUserToFirebaseDatabase(it.toString())
                     }
                 }
@@ -113,7 +116,10 @@ class RegisterActivity : AppCompatActivity() {
 
         ref.setValue(user)
             .addOnSuccessListener {
-                Log.d("RegisterActivity", "Finally we saved the user to Firebase database")
+                Log.d(TAG, "Finally we saved the user to Firebase database")
+            }
+            .addOnFailureListener {
+                Log.d(TAG, "Failed to set value to database: ${it.message}")
             }
     }
 
