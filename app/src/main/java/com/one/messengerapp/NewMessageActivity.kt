@@ -13,5 +13,7 @@ class NewMessageActivity : AppCompatActivity() {
 
         val view = binding.root
         setContentView(view)
+
+        supportActionBar?.title = "Select User"
     }
 }
