@@ -21,7 +21,8 @@
         android:paddingStart="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/selectphoto_register_button"
+        />
 
     <EditText
         android:id="@+id/edittext_email"
