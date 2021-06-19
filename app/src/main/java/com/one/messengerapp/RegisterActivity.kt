@@ -18,7 +18,7 @@ import java.util.*
 class RegisterActivity : AppCompatActivity() {
 
     companion object{
-        val TAG = "RegisterActivity"
+        const val TAG = "RegisterActivity"
     }
 
     private lateinit var binding: ActivityRegisterBinding
