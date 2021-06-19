@@ -2,6 +2,7 @@ package com.one.messengerapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.one.messengerapp.databinding.ActivityNewMessageBinding
 
 class NewMessageActivity : AppCompatActivity() {
@@ -15,5 +16,7 @@ class NewMessageActivity : AppCompatActivity() {
         setContentView(view)
 
         supportActionBar?.title = "Select User"
+
+        binding.recyclerviewNewmessage.adapter
     }
 }
