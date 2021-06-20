@@ -29,7 +29,6 @@ class RegisterActivity : AppCompatActivity() {
 
         val view = binding.root
         setContentView(view)
-
         binding.buttonRegister.setOnClickListener {
             performRegister()
         }
@@ -47,6 +46,19 @@ class RegisterActivity : AppCompatActivity() {
             getContent.launch(intent)
         }
 
+
+
+    }
+
+    private fun verifyUserIsLoggedIn() {
+        val uid = FirebaseAuth.getInstance().uid
+
+        if (uid == null) {
+            Log.d(TAG,"$uid")
+            val intent = Intent(this, LatestMessagesActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
     }
 
     var selectedPhotoUrl: Uri? = null
