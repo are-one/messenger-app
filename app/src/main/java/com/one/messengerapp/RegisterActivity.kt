@@ -13,6 +13,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.one.messengerapp.databinding.ActivityRegisterBinding
+import com.one.messengerapp.models.User
 import java.util.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -134,8 +135,4 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d(TAG, "Failed to set value to database: ${it.message}")
             }
     }
-}
-
-class User(val uid: String, val username: String, val profileImageUrl: String){
-    constructor() : this("","","")
 }
