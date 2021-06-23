@@ -7,10 +7,19 @@ import android.view.Menu
 import android.view.MenuItem
 import com.one.messengerapp.databinding.ActivityLatestMessagesBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.one.messengerapp.R
+import com.one.messengerapp.models.User
 import com.one.messengerapp.registerlogin.RegisterActivity
 
 class LatestMessagesActivity : AppCompatActivity() {
+
+    companion object{
+        var currentUser : User? = null
+    }
 
     private lateinit var binding: ActivityLatestMessagesBinding
 
@@ -22,6 +31,24 @@ class LatestMessagesActivity : AppCompatActivity() {
         setContentView(view)
 
         verifyUserIsLoggedIn()
+
+        fetchCurrentUser()
+    }
+
+    private fun fetchCurrentUser() {
+        val uid = FirebaseAuth.getInstance().uid
+        val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+
+        ref.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                currentUser = snapshot.getValue(User::class.java)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
     }
 
     private fun verifyUserIsLoggedIn() {
