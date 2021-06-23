@@ -14,7 +14,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".LatestMessagesActivity" />
         </activity>
-        <activity android:name=".RegisterActivity">
+        <activity android:name=".registerlogin.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,7 +25,7 @@
         <activity android:name=".LoginActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".RegisterActivity" />
+                android:value=".registerlogin.RegisterActivity" />
         </activity>
         <activity android:name=".NewMessageActivity">
             <meta-data
