@@ -1,8 +1,9 @@
-package com.one.messengerapp
+package com.one.messengerapp.messages
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.one.messengerapp.NewMessageActivity.Companion.USER_KEY
+import com.one.messengerapp.R
+import com.one.messengerapp.messages.NewMessageActivity.Companion.USER_KEY
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.GroupieViewHolder
 import com.xwray.groupie.Item

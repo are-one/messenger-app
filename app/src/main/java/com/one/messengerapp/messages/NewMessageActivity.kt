@@ -1,4 +1,4 @@
-package com.one.messengerapp
+package com.one.messengerapp.messages
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.one.messengerapp.R
 import com.one.messengerapp.databinding.ActivityNewMessageBinding
 import com.one.messengerapp.models.User
 import com.squareup.picasso.Picasso

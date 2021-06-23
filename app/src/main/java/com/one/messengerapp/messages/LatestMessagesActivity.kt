@@ -1,4 +1,4 @@
-package com.one.messengerapp
+package com.one.messengerapp.messages
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,6 +7,7 @@ import android.view.Menu
 import android.view.MenuItem
 import com.one.messengerapp.databinding.ActivityLatestMessagesBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.one.messengerapp.R
 import com.one.messengerapp.registerlogin.RegisterActivity
 
 class LatestMessagesActivity : AppCompatActivity() {

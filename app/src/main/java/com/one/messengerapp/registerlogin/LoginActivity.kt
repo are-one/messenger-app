@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
-import com.one.messengerapp.LatestMessagesActivity
+import com.one.messengerapp.messages.LatestMessagesActivity
 import com.one.messengerapp.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
