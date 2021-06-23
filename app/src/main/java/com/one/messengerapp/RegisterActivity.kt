@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.one.messengerapp.databinding.ActivityRegisterBinding
@@ -22,13 +23,17 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private lateinit var binding: ActivityRegisterBinding
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterBinding.inflate(layoutInflater)
+        mAuth = FirebaseAuth.getInstance()
+        verifyUserIsLoggedIn()
 
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         binding.buttonRegister.setOnClickListener {
             performRegister()
         }
@@ -39,22 +44,22 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         binding.selectphotoRegisterButton.setOnClickListener {
-
             val intent = Intent(Intent.ACTION_PICK)
             intent.type = "image/*"
-//            startActivityForResult(intent, 0)
             getContent.launch(intent)
         }
-
-
-
     }
 
-    private fun verifyUserIsLoggedIn() {
-        val uid = FirebaseAuth.getInstance().uid
+    override fun onStart() {
+        super.onStart()
 
-        if (uid == null) {
-            Log.d(TAG,"$uid")
+        verifyUserIsLoggedIn()
+    }
+
+    private fun verifyUserIsLoggedIn(){
+        val user = mAuth.currentUser
+
+        if (user == null) {
             val intent = Intent(this, LatestMessagesActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
@@ -62,7 +67,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     var selectedPhotoUrl: Uri? = null
-
     var getContent = registerForActivityResult(StartActivityForResult()){
         if (it.resultCode == Activity.RESULT_OK && it.data != null){
 
@@ -79,7 +83,6 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun performRegister() {
-        val username = binding.edittextUsername.text.toString()
         val email = binding.edittextEmail.text.toString()
         val password = binding.edittextPassword.text.toString()
 
@@ -121,7 +124,7 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun saveUserToFirebaseDatabase(profileImageUrl: String) {
-        val uid = FirebaseAuth.getInstance().uid ?: ""
+        val uid = mAuth.uid ?: ""
         val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
 
         val user = User(uid, binding.edittextUsername.text.toString(), profileImageUrl)
@@ -138,7 +141,6 @@ class RegisterActivity : AppCompatActivity() {
                 Log.d(TAG, "Failed to set value to database: ${it.message}")
             }
     }
-
 }
 
 class User(val uid: String, val username: String, val profileImageUrl: String){
