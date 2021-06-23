@@ -13,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.one.messengerapp.LatestMessagesActivity
-import com.one.messengerapp.LoginActivity
 import com.one.messengerapp.databinding.ActivityRegisterBinding
 import com.one.messengerapp.models.User
 import java.util.*

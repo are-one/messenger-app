@@ -1,10 +1,11 @@
-package com.one.messengerapp
+package com.one.messengerapp.registerlogin
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.one.messengerapp.LatestMessagesActivity
 import com.one.messengerapp.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {
