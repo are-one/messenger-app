@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.one.messengerapp.databinding.ActivityRegisterBinding
@@ -50,16 +49,10 @@ class RegisterActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-
-        verifyUserIsLoggedIn()
-    }
-
     private fun verifyUserIsLoggedIn(){
-        val user = mAuth.currentUser
+        val currentUser = mAuth.currentUser
 
-        if (user == null) {
+        if (currentUser != null) {
             val intent = Intent(this, LatestMessagesActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK.or(Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(intent)
