@@ -9,6 +9,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.one.messengerapp.databinding.ActivityNewMessageBinding
+import com.one.messengerapp.models.User
 import com.squareup.picasso.Picasso
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.Item
@@ -26,7 +27,6 @@ class NewMessageActivity : AppCompatActivity() {
         setContentView(view)
 
         supportActionBar?.title = "Select User"
-
 
         fetchUsers()
     }
