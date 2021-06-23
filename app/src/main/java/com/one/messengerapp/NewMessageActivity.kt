@@ -1,5 +1,6 @@
 package com.one.messengerapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -45,6 +46,13 @@ class NewMessageActivity : AppCompatActivity() {
                     if (user != null) {
                         adapter.add(UserItem(user))
                     }
+                }
+
+                adapter.setOnItemClickListener { item, view ->
+                    val intent =  Intent(view.context, ChatLogActivity::class.java)
+                    startActivity(intent)
+
+                    finish()
                 }
 
                 binding.recyclerviewNewmessage.adapter = adapter
